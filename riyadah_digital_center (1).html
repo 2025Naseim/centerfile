@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مركز الريادة الرقمية لتدريب الحاسوب</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tahoma,Arial,sans-serif;background:#f5f9fd;color:#092f55;line-height:1.8}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+header{background:white;box-shadow:0 2px 12px #092f5512;position:sticky;top:0;z-index:10}
+nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:12px 0}
+.logo{font-size:19px;font-weight:bold;color:#073763}
+.logo span{display:block;font-size:12px;color:#f28c18}
+.links{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;font-weight:bold}
+.links a:hover{color:#f28c18}
+.hero{background:linear-gradient(120deg,#06294a,#07528a);color:white;padding:65px 0;overflow:hidden}
+.hero-content{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}
+.hero h1{font-size:clamp(30px,4vw,46px);line-height:1.5;margin-bottom:12px}
+.hero h1 span{color:#ff981f}
+.hero p{color:#e1edf8;margin-bottom:25px}
+.hero img{width:100%;height:320px;object-fit:cover;border-radius:18px}
+.btn{display:inline-block;background:#ff981f;color:#082d4e;padding:11px 24px;border-radius:9px;font-weight:bold;margin:8px 0 0 8px;border:0;cursor:pointer;font-family:inherit}
+.btn-outline{border:1px solid white;color:white;padding:10px 20px;border-radius:9px;display:inline-block}
+section{padding:48px 0}
+.features{background:white}
+.feature-grid,.course-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feature,.course{ text-align:center;background:white;border-radius:13px;padding:22px 16px;box-shadow:0 3px 16px #092f550c}
+.feature .icon{font-size:30px}
+h2{font-size:27px;margin-bottom:25px;color:#073763}
+h2::after{content:"";display:block;width:65px;height:4px;background:#ff981f;margin-top:8px;border-radius:5px}
+.course{padding:0 0 18px;overflow:hidden;border:1px solid #e4edf6}
+.course .course-icon{background:#e8f3fc;padding:22px;font-size:39px}
+.course h3{font-size:17px;margin:12px 8px 4px}
+.course p{font-size:13px;padding:0 10px;color:#5a7085;margin-bottom:12px}
+.small-btn{display:inline-block;background:#074577;color:white;padding:7px 17px;border-radius:25px;font-size:13px;border:0;cursor:pointer;font-family:inherit}
+.small-btn:hover{background:#f28c18;color:#092f55}
+.about{background:#eaf4fc}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}
+.about img{width:100%;height:280px;object-fit:cover;border-radius:15px}
+.contact{background:#07345c;color:white;text-align:center;border-radius:18px;padding:32px 20px}
+.contact h2{color:white}
+footer{background:#031e36;color:white;padding:28px 0;text-align:center;font-size:14px}
+footer p{margin:5px}
+
+/* نافذة تفاصيل الدورات */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1000;justify-content:center;align-items:center;padding:15px}
+.modal-content{background:white;width:100%;max-width:650px;max-height:85vh;overflow-y:auto;padding:28px;border-radius:15px;position:relative;color:#092f55}
+.modal-content h2{padding-left:35px;margin-bottom:15px}
+.modal-content h3{color:#f28c18;margin:15px 0 5px}
+.modal-content ul{padding-right:23px}
+.modal-content li{margin-bottom:4px}
+.close-modal{position:absolute;left:15px;top:8px;font-size:30px;cursor:pointer;color:#e74c3c;border:0;background:none}
+.modal-content .btn{margin-top:20px}
+body.modal-open{overflow:hidden}
+
+@media(max-width:800px){
+ .hero-content,.about-grid{grid-template-columns:1fr}
+ .hero{padding:38px 0}
+ .hero img{height:230px}
+ .feature-grid,.course-grid{grid-template-columns:repeat(2,1fr)}
+ .links{gap:12px;font-size:13px}
+}
+@media(max-width:430px){
+ .feature-grid,.course-grid{grid-template-columns:1fr}
+ .hero h1{font-size:29px}
+ .logo{font-size:16px}
+ .modal-content{padding:22px 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="container">
+  <div class="logo">💻 مركز الريادة الرقمية<span>لتدريب الحاسوب</span></div>
+  <div class="links">
+    <a href="#home">الرئيسية</a>
+    <a href="#courses">الدورات</a>
+    <a href="#trainers">المدربون</a>
+    <a href="#about">عن المركز</a>
+    <a href="#contact">تواصل معنا</a>
+  </div>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-content">
+  <div>
+   <h1>مركز الريادة <span>الرقمية</span></h1>
+   <h2 style="color:white;font-size:25px">لتدريب الحاسوب</h2>
+   <p>طوّر مهاراتك الرقمية، وتعلّم الحاسوب والبرمجة وإنشاء المواقع مع مركز الريادة الرقمية. دورات أونلاين تناسب مختلف المستويات.</p>
+   <a class="btn" href="#courses">اكتشف الدورات ←</a>
+   <a class="btn-outline" href="#about">تعرّف علينا</a>
+  </div>
+  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" alt="طالب يتعلم باستخدام الحاسوب">
+ </div>
+</section>
+
+<section class="features">
+ <div class="container feature-grid">
+  <div class="feature"><div class="icon">💻</div><h3>دروس أونلاين</h3><p>تعلم من أي مكان</p></div>
+  <div class="feature"><div class="icon">👨‍🏫</div><h3>مدربون متخصصون</h3><p>شرح مبسط وتفاعلي</p></div>
+  <div class="feature"><div class="icon">📚</div><h3>مجموعات منظمة</h3><p>وفق مستويات الطلاب</p></div>
+  <div class="feature"><div class="icon">🏆</div><h3>تطوير المهارات</h3><p>معرفة عملية وتطبيقية</p></div>
+ </div>
+</section>
+
+<section id="courses">
+ <div class="container">
+  <h2>دوراتنا التدريبية</h2>
+  <div class="course-grid">
+   <article class="course"><div class="course-icon">🪟</div><h3>أساسيات Windows</h3><p>التعامل مع النظام وإدارة الملفات</p><button class="small-btn" onclick="openCourse('windows')">تفاصيل الدورة</button></article>
+   <article class="course"><div class="course-icon">📊</div><h3>Word وExcel</h3><p>تطبيقات مكتبية ومهارات عملية</p><button class="small-btn" onclick="openCourse('office')">تفاصيل الدورة</button></article>
+   <article class="course"><div class="course-icon">👨‍💻</div><h3>لغات البرمجة</h3><p>Python وPHP وC++</p><button class="small-btn" onclick="openCourse('programming')">تفاصيل الدورة</button></article>
+   <article class="course"><div class="course-icon">🌐</div><h3>إنشاء المواقع</h3><p>HTML وCSS وتطوير الويب</p><button class="small-btn" onclick="openCourse('web')">تفاصيل الدورة</button></article>
+   <article class="course"><div class="course-icon">📡</div><h3>الشبكات</h3><p>مفاهيم الشبكات وأساسيات الاتصال</p><button class="small-btn" onclick="openCourse('networks')">تفاصيل الدورة</button></article>
+   <article class="course"><div class="course-icon">🎨</div><h3>Photoshop</h3><p>التصميم وتحرير الصور</p><button class="small-btn" onclick="openCourse('photoshop')">تفاصيل الدورة</button></article>
+  </div>
+ </div>
+</section>
+
+<section class="about" id="about">
+ <div class="container about-grid">
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" alt="بيئة تعلم وتطوير رقمي">
+  <div>
+   <h2>عن مركز الريادة الرقمية</h2>
+   <p>مركز الريادة الرقمية مركز تدريبي يهدف إلى تمكين الطلاب من اكتساب مهارات الحاسوب والتقنية الحديثة، من خلال التعليم التفاعلي والتطبيق العملي، لبناء مستقبل رقمي أفضل.</p>
+   <p>نسعى إلى توفير بيئة تعليمية تشجع على التعلم المستمر والإبداع والتطور المهني.</p>
+  </div>
+ </div>
+</section>
+
+<section id="trainers">
+ <div class="container">
+  <h2>مدربونا</h2>
+  <div class="feature">
+   <div class="icon">👨‍🏫</div>
+   <h3>المدرب نسيم مهدي</h3>
+   <p>علوم الحاسوب والتدريب الرقمي</p>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container contact">
+  <h2>هل لديك أي استفسار؟</h2>
+  <p>تواصل معنا لمعرفة تفاصيل الدورات والتسجيل.</p>
+  <p style="margin:18px 0"><a class="btn" href="https://wa.me/23585984493" target="_blank" rel="noopener">تواصل عبر WhatsApp</a></p>
+  <p>الهاتف: +235 85984493</p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <p><strong>مركز الريادة الرقمية لتدريب الحاسوب</strong></p>
+  <p>التعلم اليوم، والريادة غدًا.</p>
+  <p>© 2026 جميع الحقوق محفوظة.</p>
+ </div>
+</footer>
+
+<!-- نافذة تفاصيل الدورات -->
+<div class="modal" id="courseModal" onclick="closeOutside(event)" aria-hidden="true">
+ <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <button class="close-modal" onclick="closeModal()" aria-label="إغلاق">×</button>
+  <h2 id="modalTitle">تفاصيل الدورة</h2>
+  <p id="modalDescription"></p>
+  <h3>أهداف الدورة</h3><ul id="modalGoals"></ul>
+  <h3>المحاور التعليمية</h3><ul id="modalTopics"></ul>
+  <h3>المهارات المكتسبة</h3><p id="modalSkills"></p>
+  <h3>الفئة المستهدفة</h3><p id="modalAudience"></p>
+  <h3>طريقة الدراسة</h3><p>دروس مباشرة بالصوت والصورة عبر Google Meet.</p>
+  <a id="registerLink" class="btn" target="_blank" rel="noopener">التسجيل في الدورة عبر WhatsApp</a>
+ </div>
+</div>
+
+<script>
+const courses = {
+ windows:{
+  title:"أساسيات Windows",
+  description:"تعلم التعامل مع نظام Windows واستخدام الحاسوب وإدارة ملفاته وبرامجه بكفاءة.",
+  goals:["التعرف على نظام التشغيل","إدارة الملفات والمجلدات","التعامل مع البرامج والإعدادات الأساسية"],
+  topics:["واجهة Windows وسطح المكتب","قائمة Start وشريط المهام","إنشاء الملفات والمجلدات وتنظيمها","النسخ والقص واللصق","تثبيت البرامج وحذفها","إعدادات النظام والحماية الأساسية"],
+  skills:"استخدام الحاسوب وإدارة الملفات والبرامج بصورة مستقلة.",
+  audience:"المبتدئون والطلاب الراغبون في تعلم استخدام الحاسوب."
+ },
+ office:{
+  title:"Word وExcel",
+  description:"تعلم استخدام تطبيقات Microsoft Office في الدراسة والعمل والمهام اليومية.",
+  goals:["إنشاء مستندات احترافية","تنظيم البيانات والجداول","تنفيذ العمليات الحسابية الأساسية"],
+  topics:["واجهة Word وتنسيق النصوص","إدراج الجداول والصور","إعداد المستندات للطباعة","واجهة Excel والخلايا","المعادلات والدوال الأساسية","الفرز والتصفية والرسوم البيانية"],
+  skills:"إنشاء المستندات وتنظيم البيانات وإجراء الحسابات الأساسية.",
+  audience:"الطلاب والموظفون والباحثون عن تطوير مهاراتهم المكتبية."
+ },
+ programming:{
+  title:"لغات البرمجة",
+  description:"مدخل عملي إلى عالم البرمجة وتطوير التفكير المنطقي باستخدام لغات برمجية متنوعة.",
+  goals:["فهم المفاهيم الأساسية للبرمجة","كتابة الأكواد البرمجية","التدرب على حل المشكلات"],
+  topics:["مقدمة في البرمجة","المتغيرات وأنواع البيانات","الشروط والحلقات التكرارية","الدوال","مقدمة في Python وPHP وC++","تطبيقات ومشروعات عملية مبسطة"],
+  skills:"كتابة برامج بسيطة وفهم أساسيات بناء التطبيقات.",
+  audience:"المبتدئون والطلاب والمهتمون بتعلم البرمجة."
+ },
+ web:{
+  title:"إنشاء المواقع الإلكترونية",
+  description:"تعلم بناء صفحات ومواقع الإنترنت خطوة بخطوة باستخدام تقنيات تطوير الويب الأساسية.",
+  goals:["فهم طريقة عمل مواقع الويب","إنشاء صفحات إلكترونية","تصميم صفحات متجاوبة مع الشاشات"],
+  topics:["مقدمة في HTML","تنسيق الصفحات باستخدام CSS","إضافة النصوص والصور والروابط","الألوان والخطوط والتخطيطات","التصميم المتجاوب للهاتف والحاسوب","تنفيذ مشروع موقع عملي"],
+  skills:"إنشاء صفحات ومواقع إلكترونية أساسية ومتجاوبة.",
+  audience:"المبتدئون والطلاب والمهتمون بتطوير المواقع."
+ },
+ networks:{
+  title:"الشبكات",
+  description:"التعرف على أساسيات شبكات الحاسوب ومكوناتها وطرق الاتصال بين الأجهزة.",
+  goals:["فهم مفاهيم الشبكات","التعرف على أجهزة الشبكات","فهم أساسيات الاتصال والحماية"],
+  topics:["مفهوم الشبكات وأهميتها","أنواع الشبكات LAN وWAN","أجهزة الشبكات مثل Router وSwitch","عناوين IP","أساسيات Wi-Fi والاتصال","مبادئ أمن الشبكات"],
+  skills:"فهم مكونات الشبكات ومبادئ الاتصال وإعداد الشبكات الأساسية.",
+  audience:"طلاب الحاسوب والمهتمون بتقنية المعلومات."
+ },
+ photoshop:{
+  title:"Photoshop",
+  description:"تعلم أساسيات التصميم وتحرير الصور وإنشاء تصاميم إعلانية باستخدام Photoshop.",
+  goals:["التعرف على واجهة البرنامج وأدواته","تحرير الصور","إنشاء تصاميم بسيطة"],
+  topics:["واجهة Photoshop","أدوات التحديد والقص","الطبقات Layers","تعديل الصور والألوان","إضافة النصوص والمؤثرات","تصميم إعلان أو منشور"],
+  skills:"تحرير الصور وإنشاء تصاميم إعلانية أساسية.",
+  audience:"المبتدئون والطلاب والمهتمون بالتصميم."
+ }
+};
+
+function addList(id, items){
+ const list=document.getElementById(id);
+ list.replaceChildren();
+ items.forEach(item=>{
+  const li=document.createElement("li");
+  li.textContent=item;
+  list.appendChild(li);
+ });
+}
+
+function openCourse(id){
+ const course=courses[id];
+ if(!course) return;
+
+ document.getElementById("modalTitle").textContent=course.title;
+ document.getElementById("modalDescription").textContent=course.description;
+ document.getElementById("modalSkills").textContent=course.skills;
+ document.getElementById("modalAudience").textContent=course.audience;
+
+ addList("modalGoals",course.goals);
+ addList("modalTopics",course.topics);
+
+ document.getElementById("registerLink").href=
+  "https://wa.me/23585984493?text="+
+  encodeURIComponent("السلام عليكم، أرغب في التسجيل في دورة "+course.title);
+
+ const modal=document.getElementById("courseModal");
+ modal.style.display="flex";
+ modal.setAttribute("aria-hidden","false");
+ document.body.classList.add("modal-open");
+ document.querySelector(".close-modal").focus();
+}
+
+function closeModal(){
+ const modal=document.getElementById("courseModal");
+ modal.style.display="none";
+ modal.setAttribute("aria-hidden","true");
+ document.body.classList.remove("modal-open");
+}
+
+function closeOutside(event){
+ if(event.target.id==="courseModal") closeModal();
+}
+
+document.addEventListener("keydown",event=>{
+ if(event.key==="Escape") closeModal();
+});
+</script>
+
+</body>
+</html>
